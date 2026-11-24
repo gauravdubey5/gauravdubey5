@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09172E"/>
+      <stop offset="100%" stop-color="#060E1C"/>
+    </linearGradient>
+    <linearGradient id="p2Border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <marker id="pipeArrow" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#38BDF8"/>
+    </marker>
+  </defs>
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .font-mono { font-family: 'Consolas', 'Fira Code', 'Roboto Mono', monospace; }
+  </style>
+
+  <rect x="2" y="2" width="796" height="236" rx="12" fill="url(#p2Grad)" stroke="url(#p2Border)" stroke-width="1.8"/>
+
+  <!-- Top Badge -->
+  <g transform="translate(25, 22)">
+    <rect x="0" y="0" width="125" height="22" rx="4" fill="#8B5CF6" fill-opacity="0.25" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="62" y="15" fill="#C4B5FD" class="font-mono" font-size="10" font-weight="700" text-anchor="middle">CI/CD PIPELINE 02</text>
+    <text x="140" y="17" fill="#EAF2FF" class="font-sans" font-size="16" font-weight="700">GitHub Actions CI/CD Pipeline Automation</text>
+  </g>
+
+  <!-- Flowchart Pipeline Blocks -->
+  <g transform="translate(25, 62)">
+    <!-- Stage 1: Checkout & Format -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="135" height="74" rx="8" fill="#0C1B33" stroke="#1E3A8A" stroke-width="1.2"/>
+      <circle cx="16" cy="18" r="4.5" fill="#38BDF8"/>
+      <text x="26" y="22" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">Stage 1: Lint</text>
+      <text x="12" y="44" fill="#E2E8F0" class="font-mono" font-size="10">terraform fmt</text>
+      <text x="12" y="60" fill="#94A3B8" class="font-mono" font-size="9.5">terraform validate</text>
+    </g>
+
+    <line x1="135" y1="37" x2="152" y2="37" stroke="#38BDF8" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+    <!-- Stage 2: Security Scans (TFLint, tfsec, Checkov) -->
+    <g transform="translate(155, 0)">
+      <rect x="0" y="0" width="195" height="74" rx="8" fill="#141838" stroke="#8B5CF6" stroke-width="1.2"/>
+      <circle cx="16" cy="18" r="4.5" fill="#A78BFA"/>
+      <text x="26" y="22" fill="#EDE9FE" class="font-mono" font-size="11" font-weight="700">Stage 2: Shift-Left Security</text>
+      <text x="12" y="44" fill="#C4B5FD" class="font-mono" font-size="10">tflint • tfsec • Checkov</text>
+      <text x="12" y="60" fill="#94A3B8" class="font-mono" font-size="9.5">GitLeaks &amp; Semgrep Scan</text>
+    </g>
+
+    <line x1="350" y1="37" x2="367" y2="37" stroke="#38BDF8" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+    <!-- Stage 3: Speculative Plan -->
+    <g transform="translate(370, 0)">
+      <rect x="0" y="0" width="165" height="74" rx="8" fill="#0C1B33" stroke="#1E3A8A" stroke-width="1.2"/>
+      <circle cx="16" cy="18" r="4.5" fill="#F59E0B"/>
+      <text x="26" y="22" fill="#FDE68A" class="font-mono" font-size="11" font-weight="700">Stage 3: Plan</text>
+      <text x="12" y="44" fill="#E2E8F0" class="font-mono" font-size="10">terraform plan</text>
+      <text x="12" y="60" fill="#94A3B8" class="font-mono" font-size="9.5">PR Comment Artifact</text>
+    </g>
+
+    <line x1="535" y1="37" x2="552" y2="37" stroke="#38BDF8" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+    <!-- Stage 4: Gate & Apply -->
+    <g transform="translate(555, 0)">
+      <rect x="0" y="0" width="195" height="74" rx="8" fill="#08211E" stroke="#10B981" stroke-width="1.2"/>
+      <circle cx="16" cy="18" r="4.5" fill="#10B981"/>
+      <text x="26" y="22" fill="#A7F3D0" class="font-mono" font-size="11" font-weight="700">Stage 4: Deploy Gate</text>
+      <text x="12" y="44" fill="#6EE7B7" class="font-mono" font-size="10">Environment Approval</text>
+      <text x="12" y="60" fill="#94A3B8" class="font-mono" font-size="9.5">terraform apply -auto-approve</text>
+    </g>
+  </g>
+
+  <!-- Tags Row -->
+  <g transform="translate(25, 175)">
+    <rect x="0" y="0" width="130" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="65" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">GitHub Actions</text>
+
+    <rect x="140" y="0" width="110" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="195" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">TFLint Linter</text>
+
+    <rect x="260" y="0" width="100" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="310" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">tfsec Scanner</text>
+
+    <rect x="370" y="0" width="110" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="425" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">Checkov Rules</text>
+
+    <rect x="490" y="0" width="110" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="545" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">GitLeaks Scan</text>
+
+    <rect x="610" y="0" width="165" height="26" rx="5" fill="#102E20" stroke="#10B981" stroke-width="0.8"/>
+    <text x="692" y="17" fill="#6EE7B7" class="font-mono" font-size="11" font-weight="600" text-anchor="middle">Continuous Delivery</text>
+  </g>
+</svg>

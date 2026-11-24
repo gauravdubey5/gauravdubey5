@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09172E"/>
+      <stop offset="100%" stop-color="#060E1C"/>
+    </linearGradient>
+    <linearGradient id="p1Border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .font-mono { font-family: 'Consolas', 'Fira Code', 'Roboto Mono', monospace; }
+  </style>
+
+  <rect x="2" y="2" width="796" height="236" rx="12" fill="url(#p1Grad)" stroke="url(#p1Border)" stroke-width="1.8"/>
+
+  <!-- Top Badge -->
+  <g transform="translate(25, 22)">
+    <rect x="0" y="0" width="115" height="22" rx="4" fill="#0078D4" fill-opacity="0.25" stroke="#0078D4" stroke-width="1"/>
+    <text x="57" y="15" fill="#38BDF8" class="font-mono" font-size="10" font-weight="700" text-anchor="middle">AZURE IAC 01</text>
+
+    <!-- Title -->
+    <text x="130" y="17" fill="#EAF2FF" class="font-sans" font-size="16" font-weight="700">Enterprise Azure Landing Zone</text>
+  </g>
+
+  <!-- Technical Highlights Graphic -->
+  <g transform="translate(25, 60)">
+    <rect x="0" y="0" width="750" height="95" rx="8" fill="#0A162B" stroke="#1E3A8A" stroke-width="1"/>
+
+    <!-- Pillar 1: Hub & Spoke -->
+    <g transform="translate(20, 16)">
+      <circle cx="16" cy="16" r="16" fill="#0F284A"/>
+      <text x="16" y="21" fill="#38BDF8" class="font-mono" font-size="14" text-anchor="middle">🌐</text>
+      <text x="42" y="16" fill="#BAE6FD" class="font-mono" font-size="12" font-weight="700">Hub-Spoke Network</text>
+      <text x="42" y="34" fill="#94A3B8" class="font-sans" font-size="11">Centralized egress Firewall &amp; Bastion transit</text>
+    </g>
+
+    <!-- Pillar 2: 22 Reusable Modules -->
+    <g transform="translate(270, 16)">
+      <circle cx="16" cy="16" r="16" fill="#0F284A"/>
+      <text x="16" y="21" fill="#38BDF8" class="font-mono" font-size="14" text-anchor="middle">📦</text>
+      <text x="42" y="16" fill="#BAE6FD" class="font-mono" font-size="12" font-weight="700">22 Reusable Modules</text>
+      <text x="42" y="34" fill="#94A3B8" class="font-sans" font-size="11">Production AzureRM 4.x modular components</text>
+    </g>
+
+    <!-- Pillar 3: Multi-Environment -->
+    <g transform="translate(520, 16)">
+      <circle cx="16" cy="16" r="16" fill="#0F284A"/>
+      <text x="16" y="21" fill="#38BDF8" class="font-mono" font-size="14" text-anchor="middle">🛡️</text>
+      <text x="42" y="16" fill="#BAE6FD" class="font-mono" font-size="12" font-weight="700">Policy &amp; Guardrails</text>
+      <text x="42" y="34" fill="#94A3B8" class="font-sans" font-size="11">Enforced Checkov &amp; TFLint policy scans</text>
+    </g>
+
+    <!-- Bottom Specs Ribbon -->
+    <rect x="0" y="65" width="750" height="30" rx="0" fill="#07101E"/>
+    <text x="25" y="85" fill="#38BDF8" class="font-mono" font-size="10">ENVIRONMENTS: dev • staging • prod</text>
+    <text x="320" y="85" fill="#A78BFA" class="font-mono" font-size="10">STATE: Remote Azure Storage with Lease Lock</text>
+    <text x="660" y="85" fill="#10B981" class="font-mono" font-size="10">STATUS: PROD</text>
+  </g>
+
+  <!-- Tags Row -->
+  <g transform="translate(25, 175)">
+    <rect x="0" y="0" width="130" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="65" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">Terraform 1.8+</text>
+
+    <rect x="140" y="0" width="150" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="215" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">AzureRM Provider 4.x</text>
+
+    <rect x="300" y="0" width="130" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="365" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">Hub-Spoke VNet</text>
+
+    <rect x="440" y="0" width="140" height="26" rx="5" fill="#0D203D" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="510" y="17" fill="#BAE6FD" class="font-mono" font-size="11" text-anchor="middle">Checkov Security</text>
+
+    <rect x="590" y="0" width="185" height="26" rx="5" fill="#102E20" stroke="#10B981" stroke-width="0.8"/>
+    <text x="682" y="17" fill="#6EE7B7" class="font-mono" font-size="11" font-weight="600" text-anchor="middle">GitHub Actions Verified</text>
+  </g>
+</svg>

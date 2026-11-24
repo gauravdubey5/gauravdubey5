@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tfBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080F1D"/>
+      <stop offset="50%" stop-color="#0D1A30"/>
+      <stop offset="100%" stop-color="#080F1D"/>
+    </linearGradient>
+
+    <linearGradient id="parentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F2E54"/>
+      <stop offset="100%" stop-color="#1B1A48"/>
+    </linearGradient>
+
+    <linearGradient id="childGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#121D36"/>
+      <stop offset="100%" stop-color="#0B1324"/>
+    </linearGradient>
+
+    <pattern id="tfGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#0078D4" stroke-width="0.5" stroke-opacity="0.1"/>
+    </pattern>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0078D4" flood-opacity="0.15"/>
+    </filter>
+
+    <marker id="tfArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: 'Consolas', 'Fira Code', 'Roboto Mono', Monaco, monospace; }
+  </style>
+
+  <!-- Frame Background -->
+  <rect x="2" y="2" width="1096" height="556" rx="14" fill="url(#tfBg)" stroke="#1E3A8A" stroke-width="1.5"/>
+  <rect x="2" y="2" width="1096" height="556" rx="14" fill="url(#tfGrid)"/>
+
+  <!-- Top Title Bar -->
+  <g transform="translate(50, 30)">
+    <rect x="0" y="0" width="185" height="26" rx="4" fill="#8B5CF6" fill-opacity="0.2" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="92" y="17" fill="#C4B5FD" class="font-mono" font-size="11" font-weight="700" text-anchor="middle">IAC ARCHITECTURE PATTERN</text>
+    <text x="200" y="19" fill="#EAF2FF" class="font-sans" font-size="20" font-weight="700">Terraform Parent-Child Architecture &amp; Immutable Git Sourcing</text>
+  </g>
+
+  <!-- PARENT ORCHESTRATOR CARD (TOP) -->
+  <g transform="translate(180, 80)">
+    <rect x="0" y="0" width="740" height="120" rx="12" fill="url(#parentGrad)" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="740" height="36" rx="12" fill="#0C2340"/>
+    <circle cx="20" cy="18" r="4.5" fill="#38BDF8"/>
+    <text x="32" y="22" fill="#BAE6FD" class="font-mono" font-size="12.5" font-weight="700">PARENT REPOSITORY: gd-parent-azure-infra (Centralized Orchestration)</text>
+    <rect x="580" y="8" width="145" height="20" rx="4" fill="#061324"/>
+    <text x="652" y="22" fill="#38BDF8" class="font-mono" font-size="10" font-weight="600" text-anchor="middle">Remote State: Blob Storage</text>
+
+    <!-- Details -->
+    <text x="24" y="65" fill="#EAF2FF" class="font-mono" font-size="11" font-weight="600">📁 environments/ (dev • staging • prod) &amp; root main.tf</text>
+    <text x="24" y="88" fill="#94A3B8" class="font-sans" font-size="11">
+      Orchestrates environment configurations, provider setups, outputs mapping, and remote state backends.
+    </text>
+    <text x="24" y="106" fill="#38BDF8" class="font-mono" font-size="10">
+      source = "git::https://github.com/gauravdubey5/&lt;child-module&gt;.git?ref=vX.Y.Z"
+    </text>
+  </g>
+
+  <!-- Central Bus Distributor Line -->
+  <path d="M 550 200 L 550 240" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
+  <path d="M 100 240 L 1000 240" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
+
+  <!-- 8 CHILD MODULES (GRID 4x2) -->
+  <!-- ROW 1 -->
+  <!-- Module 1: Resource Group -->
+  <g transform="translate(60, 260)">
+    <line x1="100" y1="-20" x2="100" y2="0" stroke="#38BDF8" stroke-width="2" marker-end="url(#tfArrow)"/>
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">📦 Resource Group</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_resource_group</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">out: rg_name, location</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 2: Virtual Network -->
+  <g transform="translate(310, 260)">
+    <line x1="100" y1="-20" x2="100" y2="0" stroke="#38BDF8" stroke-width="2" marker-end="url(#tfArrow)"/>
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">🌐 Virtual Network</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.2.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_virtual_network</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">in: rg_name • out: vnet_id</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 3: Subnet -->
+  <g transform="translate(560, 260)">
+    <line x1="100" y1="-20" x2="100" y2="0" stroke="#38BDF8" stroke-width="2" marker-end="url(#tfArrow)"/>
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">🔀 Subnet Module</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.1.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_subnet</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">in: vnet_name, prefixes</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 4: NSG -->
+  <g transform="translate(810, 260)">
+    <line x1="100" y1="-20" x2="100" y2="0" stroke="#38BDF8" stroke-width="2" marker-end="url(#tfArrow)"/>
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">🛡️ Network Sec Group</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.1</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_network_security_group</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">in: security_rules map</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- ROW 2 -->
+  <!-- Module 5: Public IP -->
+  <g transform="translate(60, 390)">
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">📍 Public IP Module</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_public_ip</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">sku: Standard • Static</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 6: NIC -->
+  <g transform="translate(310, 390)">
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">🔌 Network Interface</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.3</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_network_interface</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">in: subnet_id, pip_id</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 7: Route Table -->
+  <g transform="translate(560, 390)">
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">🗺️ Route Table</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_route_table</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">in: routes (UDR to Firewall)</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- Module 8: NAT Gateway -->
+  <g transform="translate(810, 390)">
+    <rect x="0" y="0" width="220" height="95" rx="8" fill="url(#childGrad)" stroke="#1E3A8A" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="26" rx="8" fill="#0C1D36"/>
+    <text x="12" y="17" fill="#BAE6FD" class="font-mono" font-size="11" font-weight="700">⚡ NAT Gateway</text>
+    <rect x="155" y="4" width="55" height="18" rx="3" fill="#061224" stroke="#0078D4" stroke-width="0.8"/>
+    <text x="182" y="16" fill="#38BDF8" class="font-mono" font-size="9" font-weight="600" text-anchor="middle">v1.0.0</text>
+    <text x="12" y="46" fill="#E2E8F0" class="font-sans" font-size="10.5">azurerm_nat_gateway</text>
+    <text x="12" y="64" fill="#94A3B8" class="font-mono" font-size="9.5">outbound Internet egress</text>
+    <text x="12" y="82" fill="#10B981" class="font-mono" font-size="9">Standalone Git Repo</text>
+  </g>
+
+  <!-- BOTTOM CAPTION -->
+  <g transform="translate(180, 505)">
+    <rect x="0" y="0" width="740" height="30" rx="6" fill="#061224" stroke="#1E3A8A" stroke-width="1"/>
+    <text x="370" y="20" fill="#38BDF8" class="font-mono" font-size="10.5" font-weight="600" text-anchor="middle">
+      ✓ IMMUTABLE GIT TAGS • ATOMIC BLAST RADIUS • REUSABLE ACROSS ALL ENVIRONMENTS
+    </text>
+  </g>
+</svg>
